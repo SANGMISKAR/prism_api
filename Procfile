@@ -1,1 +1,1 @@
-web: gunicorn -w 4 -b 0.0.0.0:10000 app:app
+web: uvicorn app:app --host 0.0.0.0 --port 10000
