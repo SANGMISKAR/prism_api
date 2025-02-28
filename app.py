@@ -45,7 +45,7 @@ if __name__ == "__main__":
     print("🚀 FastAPI server is starting...")
 
     # ✅ Automatically use Render's assigned port
-    port = int(os.getenv("PORT", 10000))  # Default to 10000 if PORT not set
+    port = int(os.getenv("PORT", 5000))  # Default to 5000 if PORT not set
     uvicorn.run(app, host="0.0.0.0", port=port)
 
     print(f"✅ FastAPI server is running successfully at http://0.0.0.0:{port}")
