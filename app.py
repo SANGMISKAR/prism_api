@@ -1,9 +1,9 @@
-from fastapi import FastAPI, UploadFile
-import uvicorn
-from script import colorize_image
-from fastapi.responses import FileResponse, JSONResponse
 import os
 import numpy as np
+from fastapi import FastAPI, UploadFile
+from fastapi.responses import FileResponse, JSONResponse
+import uvicorn
+from script import colorize_image
 from helper import get_file_extension, does_file_exist, get_file_with_extension
 
 app = FastAPI()
@@ -43,5 +43,9 @@ async def upload_image(file: UploadFile):
 
 if __name__ == "__main__":
     print("🚀 FastAPI server is starting...")
-    uvicorn.run(app, host="127.0.0.1", port=5000)
-    print("✅ FastAPI server is running successfully at http://127.0.0.1:5000")
+
+    # ✅ Automatically use Render's assigned port
+    port = int(os.getenv("PORT", 10000))  # Default to 10000 if PORT not set
+    uvicorn.run(app, host="0.0.0.0", port=port)
+
+    print(f"✅ FastAPI server is running successfully at http://0.0.0.0:{port}")
