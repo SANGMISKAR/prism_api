@@ -1,7 +1,7 @@
 import requests
 
 # API endpoint
-API_URL = "https://magic-1-b01n.onrender.com/upload"
+API_URL = "https://__/upload"
 
 # Path to the image file you want to upload
 image_path = "girl.jpg"  # Replace with the actual path to your image
