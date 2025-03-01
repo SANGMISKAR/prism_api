@@ -1,18 +1,25 @@
 import requests
 
-# API URL
-url = "http://127.0.0.1:5000/upload"
+# API endpoint
+API_URL = "https://magic-s7zz.onrender.com/upload"
 
-# Image file to test (Change the path to your image file)
-file_path = "2.png"
+# Path to the image file you want to upload
+image_path = "girl.jpg"  # Replace with the actual path to your image
 
-# Open file in binary mode
-with open(file_path, "rb") as image_file:
-    files = {"file": (file_path, image_file, "image/jpeg")}  # Change MIME type if needed
-    response = requests.post(url, files=files)
+# Open the image file in binary mode
+with open(image_path, "rb") as file:
+    files = {"file": (image_path, file, "image/jpeg")}  # Adjust the MIME type if needed
 
-# Print response
-if response.status_code == 200:
-    print("✅ Image uploaded successfully! Download the colorized image from:", response.url)
-else:
-    print("❌ Failed to upload image. Response:", response.json())
+    # Send a POST request to the API
+    response = requests.post(API_URL, files=files)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Save the colorized image returned by the API
+        output_path = "colorized_image.png"  # Save the output image with this name
+        with open(output_path, "wb") as output_file:
+            output_file.write(response.content)
+        print(f"✅ Colorized image saved as {output_path}")
+    else:
+        # Print the error message if the request failed
+        print(f"❌ Failed to process image: {response.status_code} - {response.text}")
