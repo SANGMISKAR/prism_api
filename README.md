@@ -26,7 +26,7 @@ The app features a modern, minimal black-and-white aesthetic and Firebase authen
 ```
 Prism/
 │
-├── magic/                     # FastAPI Backend Folder
+├── Prism_api/                     # FastAPI Backend Folder
 │   ├── app.py                 # Main API Script
 │   ├── script.py              # AI Colorization Logic
 │   ├── colorization_deploy_v2.prototxt
@@ -65,7 +65,8 @@ Prism/
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/SANGMISKAR/magic.git
+git clone https://github.com/SANGMISKAR/prism_api.git
+git clone https://github.com/SANGMISKAR/prism_app.git
 cd magic
 ```
 
